@@ -1,30 +1,16 @@
-// main.js
-
-// Function to fetch data from the Cloudflare Worker
-function fetchWorkerData() {
-  const workerUrl = 'https://frmgit-wrkwr.2916ae0f6a8f8ccdba724cb5.workers.dev';  // Replace with your actual Cloudflare Worker URL
-
-  fetch(workerUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Failed to fetch data');
-      }
-      return response.json();
-    })
-    .then(data => {
-      if (data.status === 'success') {
-        // Update the DOM with success message
-        document.getElementById('message').textContent = `Success: ${data.message}`;
-      } else {
-        // Update the DOM with failure message
-        document.getElementById('message').textContent = `Failed: ${data.message}`;
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      document.getElementById('message').textContent = 'Error fetching data.';
-    });
-}
-
-// Fetch data when the page loads
-window.onload = fetchWorkerData;
+// Fetch data from Cloudflare Worker
+fetch('https://frmgit-wrkwr.2916ae0f6a8f8ccdba724cb5.workers.dev')
+  .then(response => response.json())
+  .then(data => {
+    if (data.status === 'success') {
+      // If the status is success, redirect the user to the provided URL
+      window.location.href = data.message; // This will load the success URL
+    } else {
+      // Handle failure case (show an error message or something else)
+      document.getElementById('message').textContent = 'Failed to fetch data. Please try again.';
+    }
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+    document.getElementById('message').textContent = 'Error: Failed to load data.';
+  });
