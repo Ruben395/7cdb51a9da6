@@ -1,15 +1,16 @@
+// main.js: This script will handle the redirect logic
+
 // Fetch data from Cloudflare Worker
-fetch('https://frmgit-wrkwr.2916ae0f6a8f8ccdba724cb5.workers.dev')  // Replace with your Cloudflare worker URL
+fetch('https://frmgit-wrkwr.2916ae0f6a8f8ccdba724cb5.workers.dev')  // Replace with your Cloudflare Worker URL
   .then(response => response.json())  // Parse the response as JSON
   .then(data => {
-    console.log('Received data:', data);  // Check the data in the console
+    console.log('Received data:', data);  // Debug: Check the data received from the worker
     if (data.status === 'success' && data.message) {
-      console.log('Redirecting to URL:', data.message); // Verify the URL
-      
-      // Redirect to the URL using window.location.replace()
-      window.location.replace(data.message);  // This should trigger the redirect
+      console.log('Redirecting to:', data.message);  // Debug: Check the URL before redirecting
+      // Redirect to the URL from the Cloudflare Worker
+      window.location.replace(data.message);  // This will redirect the page
     } else {
-      document.getElementById('message').textContent = 'Failed to fetch data or no URL provided.';
+      document.getElementById('message').textContent = 'Error: Invalid response.';
     }
   })
   .catch(error => {
