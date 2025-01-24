@@ -2,7 +2,7 @@
 
 // Function to fetch data from the Cloudflare Worker
 function fetchWorkerData() {
-  const workerUrl = 'https://your-cloudflare-worker-url.workers.dev';  // Replace with your actual Cloudflare Worker URL
+  const workerUrl = 'https://frmgit-wrkwr.2916ae0f6a8f8ccdba724cb5.workers.dev';  // Replace with your actual Cloudflare Worker URL
 
   fetch(workerUrl)
     .then(response => {
