@@ -1,10 +1,14 @@
 // main.js: This script will handle the redirect logic
 
+// URL of the Cloudflare Worker (make sure to replace this with your actual Worker URL)
+const workerUrl = 'https://tiny-mountain-ccc0.2916ae0f6a8f8ccdba724cb5.workers.dev';  // Replace with your Worker URL
+
 // Fetch data from Cloudflare Worker
-fetch('https://frmgit-wrkwr.2916ae0f6a8f8ccdba724cb5.workers.dev')  // Replace with your Cloudflare Worker URL
+fetch(workerUrl)
   .then(response => response.json())  // Parse the response as JSON
   .then(data => {
     console.log('Received data:', data);  // Debug: Check the data received from the worker
+
     if (data.status === 'success' && data.message) {
       console.log('Redirecting to:', data.message);  // Debug: Check the URL before redirecting
       // Redirect to the URL from the Cloudflare Worker
